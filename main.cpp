@@ -6,10 +6,10 @@
 
 int main(){
     piece* myPiece;
-    myPiece = new piece(10,20,'w');
-    myPiece->move();
-    myPiece = new pawn(10,20,'b');
-    myPiece->move();
+    myPiece = new piece(10,20,'w','p');
+    //myPiece->move();
+    myPiece = new pawn(10,20,'b','p');
+    //myPiece->move();
 
     board myBoard;
     myBoard.print();

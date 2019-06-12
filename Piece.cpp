@@ -6,18 +6,20 @@
 using namespace std;
 class piece{
     public:
-
     int x;
     int y;
-    char color;
+    char color;//w:white, b:black
+    char type;//p:pawn, r:rook, b:bishop, h:horse, q:queen, k:king
     
-    piece(int x, int y, char w){
+    piece(int x, int y, char w,char t){
         this->x = x;
         this->y = y;
         this->color = w;
+        this->type = t;
     }
 
-    virtual void move(){
+    virtual bool move(int x, int y){
+
         cout<<"move in class piece\n";
     }
 };
