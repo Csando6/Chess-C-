@@ -1,6 +1,8 @@
+#ifndef BOARD_CPP
+#define BOARD_CPP
+
 #include <iostream>
 #include "Piece.cpp"
-#include "Pawn.cpp"
 
 using namespace std;
 
@@ -11,35 +13,41 @@ class board{
     public:
     piece *myBoard[width][height];
 
-    board(){
+    board(){ //init board
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
                 myBoard[i][j] = NULL;
-                //printf("%x ",myBoard[i][j]);
             }
-            // cout<<endl;
         }
-        //printf("board: %x\n",*myBoard);
-        //printf("board: %x\n",&myBoard[0][0]);
-        
-        //spawn pawn
         for(int i=0;i<8;i++){
-            myBoard[1][i] = new pawn(1,0,'w','p');
-            myBoard[6][i] = new pawn(1,0,'b','p');
+            myBoard[1][i] = new piece(white,pawn);
+            myBoard[6][i] = new piece(black, pawn);
         }
+    } 
 
-    }
     void print(){
+        cout<<"       white"<<endl;
+        cout<<"  ----------------"<<endl;
         for(int i=0;i<width;i++){
+            cout<<i<<"|";
             for(int j=0;j<height;j++){
                 if(myBoard[i][j] == NULL){
                     cout<<'.'<<" ";
                 }
                 else{
-                    cout<<myBoard[i][j]->type<<" ";
+                    cout<<myBoard[i][j]->getType()[0]<<" ";
                 }
             }
             cout<<endl;
         }
+        cout<<"  ----------------"<<endl;
+        cout<<"  ";
+        for(int i=0;i<8;i++){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+        cout<<"       black"<<endl;
     }
 };
+
+#endif
