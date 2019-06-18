@@ -2,25 +2,31 @@
 #define PIECE_CPP
 
 #include <iostream>
-
+#include <string>
 using namespace std;
+enum pieceColor{white,black};
+enum pieceType{pawn,rook,bishop,knight,queen,king};
+static const string pColor[]= {"white","black"};
+static const string pType[] = {"pawn","rook","bishop","knight","queen","king"};
+
 class piece{
     public:
-    int x;
-    int y;
-    char color;//w:white, b:black
-    char type;//p:pawn, r:rook, b:bishop, h:horse, q:queen, k:king
-    
-    piece(int x, int y, char w,char t){
-        this->x = x;
-        this->y = y;
-        this->color = w;
-        this->type = t;
+    pieceColor myColor;
+    pieceType myType;
+
+    piece(pieceColor color,pieceType type){
+        myColor = color;
+        myType = type;
     }
 
-    virtual bool move(int x, int y){
-
-        cout<<"move in class piece\n";
+    string pieceName(){
+        return pType[myType];
+    }
+    pieceType getType(){
+        return myType;
+    }
+    pieceColor getColor(){
+        return myColor;
     }
 };
 
